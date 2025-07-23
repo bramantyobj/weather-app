@@ -1,0 +1,275 @@
+/* weather-app/style.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #72EDF2 10%, #5150FE 100%); /* Gradien biru */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.weather-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Latar belakang semi-transparan */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Efek blur di belakang container */
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#city-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#city-input:focus {
+    border-color: #5150FE;
+}
+
+#search-btn {
+    background-color: #5150FE;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-btn:hover {
+    background-color: #4a49e0;
+    transform: translateY(-1px);
+}
+
+#search-btn i {
+    margin-right: 5px;
+}
+
+.weather-display {
+    background-color: #e6f7ff; /* Warna latar belakang untuk display cuaca */
+    border: 1px solid #d0e9fa;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+}
+
+.placeholder-text {
+    font-size: 1.2em;
+    color: #888;
+}
+
+.weather-info {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.weather-info h2 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.weather-info .temperature {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #007bff;
+    margin: 10px 0;
+}
+
+.weather-info .description {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.weather-info .details {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.weather-info .detail-item {
+    text-align: center;
+}
+
+.weather-info .detail-item strong {
+    display: block;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.weather-info .weather-icon {
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: #f7b731; /* Warna ikon cuaca */
+}
+
+.error-message {
+    color: #dc3545; /* Merah untuk pesan error */
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .weather-container {
+        padding: 20px;
+        margin: 20px; /* Tambahkan margin agar tidak terlalu mepet di pinggir layar */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .search-box {
+        flex-direction: column; /* Ubah tata letak jadi kolom di layar kecil */
+    }
+
+    #search-btn {
+        width: 100%; /* Tombol jadi full width */
+        margin-left: 0;
+        margin-top: 10px; /* Beri jarak dari input */
+        padding: 10px 15px;
+    }
+
+    #city-input {
+        padding: 10px 12px;
+        font-size: 1em;
+    }
+
+    .weather-info .temperature {
+        font-size: 2.8em;
+    }
+
+    .weather-info .description {
+        font-size: 1.2em;
+    }
+
+    .weather-info .details {
+        flex-direction: column; /* Ubah detail jadi kolom di layar kecil */
+        gap: 10px; /* Beri jarak antar item detail */
+    }
+
+    .weather-info .detail-item strong {
+        font-size: 1em;
+    }
+}
+
+.forecast-display {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* Garis pemisah */
+    text-align: left;
+}
+
+.forecast-display h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.forecast-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Izinkan wrapping untuk responsif */
+    gap: 15px; /* Jarak antar kartu perkiraan */
+}
+
+.forecast-card {
+    background-color: #f0f8ff; /* Warna latar belakang kartu */
+    border: 1px solid #e0effa;
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1 1 calc(33% - 20px); /* 3 kartu per baris, dengan sedikit margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 120px; /* Lebar minimum kartu */
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-3px);
+}
+
+.forecast-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #007bff;
+}
+
+.forecast-card .forecast-temp {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.forecast-card .forecast-desc {
+    font-size: 0.9em;
+    color: #666;
+    text-transform: capitalize;
+}
+
+.forecast-card .forecast-icon {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    color: #f7b731;
+}
+
+/* Responsif untuk kartu perkiraan */
+@media (max-width: 768px) {
+    .forecast-card {
+        flex: 1 1 calc(48% - 10px); /* 2 kartu per baris */
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-card {
+        flex: 1 1 100%; /* 1 kartu per baris */
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
